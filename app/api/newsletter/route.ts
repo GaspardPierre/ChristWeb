@@ -7,3 +7,4 @@ const handler = NewsletterAPI({
 })
 
 export { handler as GET, handler as POST }
+

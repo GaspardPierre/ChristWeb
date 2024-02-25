@@ -1,9 +1,14 @@
-import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer'
-import { allBlogs } from 'contentlayer/generated'
+import { fetchAllArticles } from './lib/api'
 import Main from './Main'
 
 export default async function Page() {
-  const sortedPosts = sortPosts(allBlogs)
-  const posts = allCoreContent(sortedPosts)
-  return <Main posts={posts} />
+  try {
+    const { data } = await fetchAllArticles()
+    const posts = data
+
+    return <Main posts={posts} />
+  } catch (error) {
+    console.error('Erreur lors de la récupération des articles: ', error)
+    return <div>Erreur lors du chargement des articles</div>
+  }
 }
