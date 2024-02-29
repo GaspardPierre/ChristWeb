@@ -4,14 +4,11 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer'
+import createSummary from './utils/createSummary'
 
 const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
-  let content = null
-
-  content = posts.length > 0 && posts[0].attributes.Content ? posts[0].attributes.Content : null
-
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -28,7 +25,8 @@ export default function Home({ posts }) {
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { id, attributes } = post
             const { Title, Content, Date, VideoUrl } = attributes
-            console.log(id, Title, Content, VideoUrl)
+            const summary = Array.isArray(Content) ? Content.slice(0, 4) : ''
+
             return (
               <li key={id} className="py-12">
                 <article>
@@ -58,7 +56,7 @@ export default function Home({ posts }) {
                         </div>
                         <div className="prose max-w-none text-justify text-gray-500 dark:text-gray-400">
                           {Content && Array.isArray(Content) && (
-                            <BlocksRenderer content={Content} />
+                            <BlocksRenderer content={summary} />
                           )}
                         </div>
                       </div>
