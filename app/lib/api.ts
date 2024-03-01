@@ -7,18 +7,18 @@ const STRAPI_URL = process.env.STRAPI_URL
 
 export const fetchAllArticles = async () => {
   try {
-    const response = await fetch(`${STRAPI_URL}/api/articles?sort[publishedAt]=desc`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store',
-      },
-    })
-    const data = await response.json()
-    console.log(
-      '*******************DATA***********************',
-      JSON.stringify(data.data[0].attributes.Content)
+    const response = await fetch(
+      `${STRAPI_URL}/api/articles?sort[publishedAt]=desc&populate[tags]=*`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          /* 'Cache-Control': 'max-age=3600', */
+        },
+      }
     )
+    const data = await response.json()
+
     return data
   } catch (error) {
     console.error('Erreur lors de la récupération des articles: ', error)
@@ -31,7 +31,7 @@ export const fetchAllArticleSlugs = async () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'no-store',
+        /*  'Cache-Control': 'max-age=3600', */
       },
     })
     const data = await response.json()
@@ -55,19 +55,18 @@ export const fetchPostBySlug = async (slug) => {
   }
 }
 
-export const fetchAllCategories = async () => {
+export const fetchAllTags = async () => {
   try {
     const response = await fetch(`${STRAPI_URL}/api/tags`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'no-store',
+        /*  'Cache-Control': 'no-store', */
       },
     })
-    const data = await response.json()
-    const { attributes } = data
-    const { Categories } = attributes
-    return Categories
+    const { data } = await response.json()
+
+    return data
   } catch (error) {
     console.error('Erreur lors de la récupération des categories: ', error)
     return []

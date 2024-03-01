@@ -24,7 +24,8 @@ export default function Home({ posts }) {
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { id, attributes } = post
-            const { Title, Content, Date, VideoUrl } = attributes
+            const { Title, Content, Date, VideoUrl, tags } = attributes
+            const tagsData = tags.data[0].attributes.Categorie
             const contentText = extractTextFromRichText(Content)
             const summary =
               contentText.length > 300 ? contentText.substring(0, 350) + '...' : contentText
@@ -51,9 +52,11 @@ export default function Home({ posts }) {
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">
-                            {/*   {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))} */}
+                            {Array.isArray(tagsData) ? (
+                              tagsData.map((tag) => <Tag key={tag} text={tag} />)
+                            ) : (
+                              <Tag key={tagsData} text={tagsData} />
+                            )}
                           </div>
                         </div>
                         <div className="prose max-w-none text-justify text-gray-500 dark:text-gray-400">
