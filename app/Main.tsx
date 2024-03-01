@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer'
-import createSummary from './utils/createSummary'
+import extractTextFromRichText from './utils/extractTextFromRichText'
 
 const MAX_DISPLAY = 5
 
@@ -25,7 +25,9 @@ export default function Home({ posts }) {
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { id, attributes } = post
             const { Title, Content, Date, VideoUrl } = attributes
-            const summary = Array.isArray(Content) ? Content.slice(0, 4) : ''
+            const contentText = extractTextFromRichText(Content)
+            const summary =
+              contentText.length > 300 ? contentText.substring(0, 350) + '...' : contentText
 
             return (
               <li key={id} className="py-12">
@@ -55,9 +57,7 @@ export default function Home({ posts }) {
                           </div>
                         </div>
                         <div className="prose max-w-none text-justify text-gray-500 dark:text-gray-400">
-                          {Content && Array.isArray(Content) && (
-                            <BlocksRenderer content={summary} />
-                          )}
+                          {summary}
                         </div>
                       </div>
                       <div className="text-base font-medium leading-6">
@@ -66,7 +66,7 @@ export default function Home({ posts }) {
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read more: "${Title}"`}
                         >
-                          Read more &rarr;
+                          Voir plus &rarr;
                         </Link>
                       </div>
                     </div>

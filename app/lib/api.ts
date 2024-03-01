@@ -15,7 +15,10 @@ export const fetchAllArticles = async () => {
       },
     })
     const data = await response.json()
-    console.log('*******************DATA***********************', data.data)
+    console.log(
+      '*******************DATA***********************',
+      JSON.stringify(data.data[0].attributes.Content)
+    )
     return data
   } catch (error) {
     console.error('Erreur lors de la récupération des articles: ', error)

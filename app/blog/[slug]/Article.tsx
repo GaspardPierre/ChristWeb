@@ -32,6 +32,7 @@ export default function Article(slug) {
   console.log('article :', article)
   const { Title, Content } = article
   console.log('Title is', Title)
+  const isArray = Array.isArray(Content)
 
   const Layout = PostLayout
 
@@ -40,6 +41,9 @@ export default function Article(slug) {
       <PageTitle>{Title}</PageTitle>
       <Layout>
         <ContentBlocksRenderer content={Content} />
+
+        <p>Le contenu de l'article n'est pas disponible.</p>
+
         {/* Autres éléments de la page ici */}
       </Layout>
     </>
