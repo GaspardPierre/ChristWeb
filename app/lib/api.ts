@@ -18,6 +18,7 @@ export const fetchAllArticles = async () => {
       }
     )
     const data = await response.json()
+    console.log('Reponse de l"api ', JSON.stringify(data))
 
     return data
   } catch (error) {

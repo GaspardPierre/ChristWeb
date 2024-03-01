@@ -69,10 +69,17 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname()
-  const tagCounts = tagData as Record<string, number>
-  const tagKeys = Object.keys(tagCounts)
-  const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
-
+  const tagCounts: Record<string, number> = {}
+  posts.forEach((post) => {
+    post.tags.forEach((tag) => {
+      if (tag in tagCounts) {
+        tagCounts[tag] += 1
+      } else {
+        tagCounts[tag] = 1
+      }
+    })
+  })
+  const sortedTags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
   console.log('initialdisplayposts DANS LIST LAYOUT WITH TAGS', initialDisplayPosts)
 
