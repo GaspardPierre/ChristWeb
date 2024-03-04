@@ -1,6 +1,6 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
-
+import Image from '@/components/Image'
 import { Space_Grotesk } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
@@ -74,6 +74,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+        <div className="relative h-[25vh] w-full overflow-hidden ">
+          <Image
+            src="/static/images/banniere.jpeg"
+            alt="Bannière"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>

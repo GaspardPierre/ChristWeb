@@ -10,9 +10,6 @@ import SearchButton from './SearchButton'
 const Header = () => {
   return (
     <header className="relative w-full bg-white">
-      <div className="relative h-[25vh] w-full overflow-hidden ">
-        <Image src="/static/images/banniere.jpeg" alt="Bannière" layout="fill" objectFit="cover" />
-      </div>
       <div className="left-0 top-1/2 flex w-full items-center justify-between px-4 py-10 md:px-10">
         <div>
           <Link href="/" aria-label={siteMetadata.headerTitle}>

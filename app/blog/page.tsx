@@ -10,6 +10,7 @@ export const metadata = genPageMetadata({ title: 'Blog' })
 export default async function BlogPage() {
   const { data } = await fetchAllArticles()
   const posts = transformArticlesData(data)
+  console.log('POSTS********', posts)
   const pageNumber = 1
   let pagination = {}
   let initialDisplayPosts = ''
@@ -29,8 +30,8 @@ export default async function BlogPage() {
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="Tous les articles..."
-      tags={posts.tags}
+      title="articles..."
+      t
     />
   )
 }

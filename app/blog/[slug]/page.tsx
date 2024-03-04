@@ -7,7 +7,6 @@ import PostLayout from '@/layouts/PostLayout'
 import PostBanner from '@/layouts/PostBanner'
 import Article from './Article'
 import { fetchPostBySlug, fetchAllArticleSlugs } from '../../lib/api'
-import BlocksRenderer from '@/components/BlocksRenderer'
 import extractTextFromRichText from 'app/utils/extractTextFromRichText'
 import siteMetadata from '@/data/siteMetadata'
 
@@ -29,7 +28,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(params) {
   const slug = params.params.slug
-  console.log('slug', slug)
+
   const articleResponse = await fetchPostBySlug(slug)
 
   if (!articleResponse || !articleResponse.data || !articleResponse.data[0]) {

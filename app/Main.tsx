@@ -24,7 +24,7 @@ export default function Home({ posts }) {
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { id, attributes } = post
-            const { Title, Content, Date, VideoUrl, tags } = attributes
+            const { Title, Content, Date, VideoUrl, tags , slug} = attributes
             const tagsData = tags.data[0].attributes.Categorie
             const contentText = extractTextFromRichText(Content)
             const summary =
@@ -45,7 +45,7 @@ export default function Home({ posts }) {
                         <div>
                           <h2 className="text-2xl font-bold leading-8 tracking-tight">
                             <Link
-                              href={`/blog/${Title}`}
+                              href={`/blog/${slug}`}
                               className="text-gray-900 dark:text-gray-100"
                             >
                               {Title}
@@ -65,7 +65,7 @@ export default function Home({ posts }) {
                       </div>
                       <div className="text-base font-medium leading-6">
                         <Link
-                          href={`/blog/${Title}`}
+                          href={`/blog/${slug}`}
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read more: "${Title}"`}
                         >
