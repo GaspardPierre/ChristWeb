@@ -19,14 +19,15 @@ const layouts = {
 
 export async function generateStaticParams() {
   const response = await fetchAllArticleSlugs()
+
   const articles = response.data
-  console.log('REsponse from generate', articles)
   return articles.map((article) => ({
     params: { slug: article.slug },
   }))
 }
 
 export async function generateMetadata(params) {
+  console.log('params generated', params)
   const slug = params.params.slug
 
   const articleResponse = await fetchPostBySlug(slug)
@@ -39,16 +40,13 @@ export async function generateMetadata(params) {
   const contentText = extractTextFromRichText(article.Content)
   const description = contentText.length > 150 ? contentText.substring(0, 150) + '...' : contentText
   const publishedAt = article.Date ? new Date(article.Date).toISOString() : ''
-  const imageUrl = article.Image
-    ? article.Image.includes('http')
-      ? article.Image
-      : siteMetadata.siteUrl + article.Image
-    : siteMetadata.socialBanner
-  /*  const tags =
-      article.tags && Array.isArray(article.tags)
-        ? article.tags.map((tag) => tag.Categorie).join(', ')
-        : '' */
-  console.log(description, article.Title, publishedAt)
+  const imageUrl = article.Image.data ? article.Image.data.attributes : null
+
+  /*   const tags =
+    article.tags && Array.isArray(article.tags)
+      ? article.tags.map((tag) => tag.Categorie).join(', ')
+      : '' */
+
   return {
     slug,
     title: article.Title,
@@ -63,13 +61,13 @@ export async function generateMetadata(params) {
       type: 'article',
       publishedTime: publishedAt,
       url: `./${article.slug}`,
-      images: [{ url: imageUrl }],
-      /*   tags, */
+      images: imageUrl ? [{ url: `http://127.0.0.1:1337${imageUrl}` }] : [],
     },
   }
 }
 
 export default async function Page({ params }) {
   const { slug } = params
+
   return <Article params={slug} />
 }

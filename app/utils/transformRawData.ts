@@ -1,6 +1,6 @@
 export default function transformArticlesData(rawData) {
   return rawData.map((article) => {
-    const { Title, Content, tags, Date, slug } = article.attributes
+    const { Title, Content, tags, Date, slug, Image, Video } = article.attributes
 
     // Extraire les noms des catégories des tags
     let transformedTags = []
@@ -12,8 +12,11 @@ export default function transformArticlesData(rawData) {
       title: Title,
       content: Content,
       tags: transformedTags,
+
       date: Date,
       slug: slug,
+      videoUrl: Video,
+      path: slug,
     }
   })
 }

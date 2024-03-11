@@ -1,24 +1,26 @@
 import ListLayout from '@/layouts/ListLayoutWithTags'
+import { ArticlesResponse } from 'Types/types'
 import { fetchAllArticles } from 'app/lib/api'
 import { genPageMetadata } from 'app/seo'
+import transformArticlesData from 'app/utils/transformRawData'
 
 const POSTS_PER_PAGE = 5
+
 export const metadata = genPageMetadata({ title: 'Blog' })
 //It will be used at build time to generate pagination paths.
 export async function generateStaticParams() {
-  const { data: articles } = await fetchAllArticles()
+  const response: ArticlesResponse = await fetchAllArticles()
+  const articles = response.data
   const totalPages = Math.ceil(articles.length / POSTS_PER_PAGE)
 
-  // Array of 'params' objects for each page number
   const paths = Array.from({ length: totalPages }, (_, index) => ({
     params: { page: (index + 1).toString() },
   }))
 
-  // Return the 'paths' object for pre-rendering paths
-  return { paths }
+  return paths
 }
 
-export default async function Page({ params }) {
+export default async function Page({ params }: { params: { page: string } }) {
   const pageNumber = parseInt(params.page, 10)
   const startIndex = (pageNumber - 1) * POSTS_PER_PAGE
   const endIndex = startIndex + POSTS_PER_PAGE

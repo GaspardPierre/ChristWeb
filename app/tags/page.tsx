@@ -10,6 +10,7 @@ export const metadata = genPageMetadata({ title: 'Tags', description: 'Things I 
 export default async function Page() {
   const { data } = await fetchAllArticles()
   const articles = transformArticlesData(data)
+
   const tagCounts = {}
 
   articles.forEach((article) => {

@@ -4,23 +4,22 @@
 import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
-import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { ArticleAttributes, ImageData, Article } from 'Types/types'
 
 interface PaginationProps {
   totalPages: number
   currentPage: number
 }
+
 interface ListLayoutProps {
-  posts: CoreContent<Blog>[]
+  posts: ArticleAttributes[]
   title: string
-  initialDisplayPosts?: CoreContent<Blog>[]
+  initialDisplayPosts?: ArticleAttributes[]
   pagination?: PaginationProps
 }
-
 function Pagination({ totalPages, currentPage }: PaginationProps) {
   const pathname = usePathname()
   const basePath = pathname.split('/')[1]
@@ -129,7 +128,7 @@ export default function ListLayoutWithTags({
           <div>
             <ul>
               {displayPosts.map((post) => {
-                const { slug, date, title, summary, tags } = post
+                const { slug, date, title, tags } = post
                 return (
                   <li key={slug} className="py-5">
                     <article className="flex flex-col space-y-2 xl:space-y-0">
@@ -154,7 +153,7 @@ export default function ListLayoutWithTags({
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
+                          {slug}
                         </div>
                       </div>
                     </article>

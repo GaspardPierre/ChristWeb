@@ -3,20 +3,19 @@
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { formatDate } from 'pliny/utils/formatDate'
-import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { ArticleAttributes } from 'Types/types'
 
 interface PaginationProps {
   totalPages: number
   currentPage: number
 }
 interface ListLayoutProps {
-  posts: CoreContent<Blog>[]
+  posts: ArticleAttributes[]
   title: string
-  initialDisplayPosts?: CoreContent<Blog>[]
+  initialDisplayPosts?: ArticleAttributes[]
   pagination?: PaginationProps
 }
 
@@ -69,7 +68,7 @@ export default function ListLayout({
   const [searchValue, setSearchValue] = useState('')
   console.log('$$$$$$$$POSTS DANS LISTLAYOUT ,', initialDisplayPosts)
   const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + post.summary + post.tags?.join(' ')
+    const searchContent = post.title + post.tags?.join(' ')
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
@@ -114,7 +113,7 @@ export default function ListLayout({
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((post) => {
-            const { path, date, Title, summary, tags } = post
+            const { path, slug, date, title, tags } = post
             return (
               <li key={path} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
@@ -128,16 +127,14 @@ export default function ListLayout({
                     <div>
                       <h3 className="text-2xl font-bold leading-8 tracking-tight">
                         <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                          {Title}
+                          {title}
                         </Link>
                       </h3>
                       <div className="flex flex-wrap">
                         {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                       </div>
                     </div>
-                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                      {summary}
-                    </div>
+                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">{slug}</div>
                   </div>
                 </article>
               </li>

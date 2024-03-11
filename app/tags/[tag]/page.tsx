@@ -39,6 +39,7 @@ export const generateStaticParams = async () => {
   const paths = tagKeys.map((tag) => ({
     tag: encodeURI(tag),
   }))
+
   return paths
 }
 
