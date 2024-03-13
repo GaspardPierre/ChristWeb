@@ -5,8 +5,7 @@ import PostLayout from '@/layouts/PostLayout'
 import ContentBlocksRenderer from '@/components/ContentBlocksRenderer'
 import Image from 'next/image'
 import siteMetadata from '@/data/siteMetadata'
-import FormattedDate from '@/components/FormattedDate'
-import { metadata } from 'app/layout'
+
 interface ImageData {
   data: {
     attributes: {
@@ -54,7 +53,7 @@ export default function Article(slug) {
 
   const article = articleData.data[0].attributes
   const articleImage = article.Image.data ? article.Image.data.attributes : null
-  const { Title, Content, Date, VideoUrl } = article
+  const { Title, Content, Date, VideoUrl, tags } = article
   const isArray = Array.isArray(Content)
   const Layout = PostLayout
 
