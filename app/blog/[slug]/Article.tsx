@@ -66,9 +66,9 @@ export default function Article(slug) {
             height="315"
             src={VideoUrl}
             title="YouTube video player"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
             className="  w-full object-cover object-center md:h-64 lg:h-72"
           ></iframe>
         ) : (
