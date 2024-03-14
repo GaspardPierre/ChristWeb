@@ -7,7 +7,7 @@ const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is;
   style-src 'self' 'unsafe-inline';
-  img-src * blob: data:;
+  img-src * blob: data: http://152.42.130.234:8000; 
   media-src *.s3.amazonaws.com;
   connect-src *;
   font-src 'self';
@@ -60,6 +60,12 @@ module.exports = () => {
           hostname: 'localhost',
           port: '',
           pathname: '**',
+        },
+        {
+          protocol: 'http',
+          hostname: '152.42.130.234',
+          port: '8000',
+          pathname: '/uploads/**',
         },
         {
           protocol: 'http',
