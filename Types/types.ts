@@ -6,15 +6,22 @@ export interface ImageData {
     }
   }
 }
-export interface ArticleAttributes {
-  title: string
-  content: string
-  date: string
+export interface TagData {
+  id: number
+  attributes: {
+    Categorie: string
+  }
+}
+
+/* export interface ArticleAttributes {
+  Title: string
+  Content: string
+  Date: string
   Image: ImageData
-  tags: string[]
+  tags: TagData
   slug: string
   path: string
-  video: string
+  VideoUrl: string
 }
 
 export interface Article {
@@ -22,11 +29,11 @@ export interface Article {
   attributes: ArticleAttributes
   meta?: Record<string, unknown>
 }
-
-export interface ArticlesResponse {
+ */
+/* export interface ArticlesResponse {
   data: Article[]
   meta?: Record<string, unknown>
-}
+} */
 
 export interface ArticleActions {
   id: string
@@ -36,4 +43,16 @@ export interface ArticleActions {
   subtitle: string
   slug: string
   perform: () => void
+}
+export interface SearchConfig {
+  // Exemples de champs, adaptez-les à vos besoins
+  provider: 'algolia' | 'kbar'
+  apiKey: string
+  indexName: string
+  query: string
+}
+
+export interface SearchProviderProps {
+  children: React.ReactNode
+  searchConfig?: SearchConfig
 }

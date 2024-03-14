@@ -2,19 +2,18 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { fetchAllArticles } from 'app/lib/api'
-import { ArticleAttributes, ArticlesResponse } from 'Types/types'
 import transformArticlesData from 'app/utils/transformRawData'
 
 export default function SearchBar() {
   const [query, setQuery] = useState('')
-  const [articles, setArticles] = useState([])
+  const [articles, setArticles] = useState<any[]>([])
   const router = useRouter()
 
   useEffect(() => {
     const loadArticles = async () => {
       try {
-        const response: ArticlesResponse = await fetchAllArticles()
-        const articles: ArticleAttributes = transformArticlesData(response)
+        const response = await fetchAllArticles()
+        const articles = transformArticlesData(response)
         setArticles(articles)
       } catch (error) {
         console.error('Erreur lors de la récupération des articles', error)
@@ -40,9 +39,16 @@ export default function SearchBar() {
       <div className="absolute mt-1 w-full rounded-md border border-gray-300 bg-white">
         {filteredArticles.map((article) => (
           <div
-            key={article.id}
+            key={article.slug}
             className="cursor-pointer p-2 hover:bg-gray-100"
-            onClick={() => router.push(`/blog/${article.attributes.slug}`)}
+            onClick={() => router.push(`/blog/${article.slug}`)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                router.push(`/blog/${article.slug}`)
+              }
+            }}
+            role="button" // rôle "button" pour l'accessibilité
+            tabIndex={0}
           >
             {article.attributes.title}
           </div>

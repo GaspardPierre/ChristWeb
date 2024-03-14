@@ -7,7 +7,6 @@ import { formatDate } from 'pliny/utils/formatDate'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { ArticleAttributes, ImageData, Article } from 'Types/types'
 
 interface PaginationProps {
   totalPages: number
@@ -15,9 +14,9 @@ interface PaginationProps {
 }
 
 interface ListLayoutProps {
-  posts: ArticleAttributes[]
+  posts: any[]
   title: string
-  initialDisplayPosts?: ArticleAttributes[]
+  initialDisplayPosts?: any[]
   pagination?: PaginationProps
 }
 function Pagination({ totalPages, currentPage }: PaginationProps) {

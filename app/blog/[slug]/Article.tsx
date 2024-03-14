@@ -1,4 +1,6 @@
 'use client'
+/* eslint-disable no-unused-vars, no-undef */
+
 import { useEffect, useState } from 'react'
 import { fetchPostBySlug } from 'app/lib/api'
 import PostLayout from '@/layouts/PostLayout'

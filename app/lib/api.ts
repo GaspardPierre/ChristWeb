@@ -9,7 +9,7 @@ export const fetchAllArticles = async () => {
       headers: {
         'Content-Type': 'application/json',
         'Cache-Control': 'max-age=3600',
-       /*  'Cache-Control': 'force-cache', */
+        /*  'Cache-Control': 'force-cache', */
       },
     })
     const data = await response.json()

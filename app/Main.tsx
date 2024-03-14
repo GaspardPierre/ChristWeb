@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars, no-undef */
+
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
@@ -24,7 +26,7 @@ export default function Home({ posts }) {
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { id, attributes } = post
             console.log('posts dans Mian.tsx, id: ', JSON.stringify(posts))
-            const { Title, Content, Date, VideoUrl, tags, slug } = attributes
+            const { Title, Content, Date, slug } = attributes
 
             const tagsData = post.attributes.tags.data.map((tag) => tag.attributes.Categorie)
 

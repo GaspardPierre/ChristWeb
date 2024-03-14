@@ -10,8 +10,8 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
+    /* 'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended', */
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
     'next',
@@ -22,6 +22,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
+    
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': [

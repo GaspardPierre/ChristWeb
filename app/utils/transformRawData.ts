@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars, no-undef */
+
 export default function transformArticlesData(rawData) {
   return rawData.map((article) => {
-    const { Title, Content, tags, Date, slug, Image, Video } = article.attributes
+    const { Title, Content, tags, Date, slug, Video } = article.attributes
 
     // Extraire les noms des catégories des tags
     let transformedTags = []

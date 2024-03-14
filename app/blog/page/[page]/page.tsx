@@ -1,15 +1,13 @@
 import ListLayout from '@/layouts/ListLayoutWithTags'
-import { ArticlesResponse } from 'Types/types'
 import { fetchAllArticles } from 'app/lib/api'
 import { genPageMetadata } from 'app/seo'
-import transformArticlesData from 'app/utils/transformRawData'
 
 const POSTS_PER_PAGE = 5
 
 export const metadata = genPageMetadata({ title: 'Blog' })
 //It will be used at build time to generate pagination paths.
 export async function generateStaticParams() {
-  const response: ArticlesResponse = await fetchAllArticles()
+  const response = await fetchAllArticles()
   const articles = response.data
   const totalPages = Math.ceil(articles.length / POSTS_PER_PAGE)
 

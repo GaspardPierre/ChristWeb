@@ -1,3 +1,4 @@
+import React, { ReactNode } from 'react'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
@@ -6,7 +7,7 @@ import Link from '@/components/Link'
 
 interface LayoutProps {
   title: string
-  children: React.ReactNode
+  children: ReactNode
   date: string
   locale: string
   next?: { path: string; title: string }
