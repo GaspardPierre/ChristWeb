@@ -11,7 +11,7 @@ const ContentSecurityPolicy = `
   media-src *.s3.amazonaws.com;
   connect-src *;
   font-src 'self';
-  frame-src giscus.app www.youtube.com;
+  frame-src giscus.app www.youtube.com youtu.be;
 `
 
 const securityHeaders = [
@@ -43,7 +43,7 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
-];
+]
 
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer]
