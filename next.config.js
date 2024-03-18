@@ -68,10 +68,10 @@ module.exports = () => {
           pathname: '/uploads/**',
         },
         {
-          protocol: 'http',
-          hostname: '127.0.0.1',
-          port: '1337',
-          pathname: '/uploads/**',
+          protocol: 'https',
+          hostname: 'christweb.s3.eu-west-2.amazonaws.com',
+          port: '',
+          pathname: '**',
         },
         {
           protocol: 'https',
