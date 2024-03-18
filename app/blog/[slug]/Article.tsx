@@ -61,7 +61,7 @@ export default function Article(slug) {
 
   return (
     <>
-      <Layout title={Title} date={Date} locale={siteMetadata.locale} tags={tags}>
+      <Layout title={Title} date={Date} locale={siteMetadata.locale} >
         {VideoUrl ? (
           <iframe
             width="560"
