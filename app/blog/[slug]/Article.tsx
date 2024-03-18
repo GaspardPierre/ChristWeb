@@ -32,7 +32,6 @@ interface ArticleData {
 export default function Article(slug) {
   const [articleData, setArticleData] = useState<ArticleData | null>(null)
   const [loading, setLoading] = useState(true)
-  console.log('Slug dans article, ', slug)
 
   useEffect(() => {
     fetchPostBySlug(slug.params)
@@ -62,7 +61,7 @@ export default function Article(slug) {
 
   return (
     <>
-      <Layout title={Title} date={Date} locale={siteMetadata.locale}>
+      <Layout title={Title} date={Date} locale={siteMetadata.locale} tags={tags}>
         {VideoUrl ? (
           <iframe
             width="560"
@@ -72,14 +71,14 @@ export default function Article(slug) {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            className="  w-full object-cover object-center md:h-64 lg:h-72"
+            className=" mx-auto md:h-64 lg:h-72"
           ></iframe>
         ) : (
           articleImage && (
             <Image
               alt={articleImage.alternativeText || 'Image'}
               src={`${articleImage.url}`}
-              className="  w-full object-cover object-center md:h-64 lg:h-72"
+              className=" mx-auto h-48 w-48 rounded-full  "
               width={544}
               height={306}
             />

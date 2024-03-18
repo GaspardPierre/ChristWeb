@@ -23,7 +23,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   const basePath = pathname.split('/')[1]
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
-
+  console.log('totalPages: ', totalPages, ' currentPage: ', currentPage)
   return (
     <div className="space-y-2 pb-8 pt-6 md:space-y-5">
       <nav className="flex justify-between">
@@ -74,6 +74,7 @@ export default function ListLayout({
   // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
+  console.log('initialDisplayPosts = ', initialDisplayPosts)
 
   return (
     <>

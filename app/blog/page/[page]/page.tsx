@@ -1,6 +1,7 @@
 import ListLayout from '@/layouts/ListLayoutWithTags'
 import { fetchAllArticles } from 'app/lib/api'
 import { genPageMetadata } from 'app/seo'
+import transformArticlesData from 'app/utils/transformRawData'
 
 const POSTS_PER_PAGE = 5
 
@@ -23,8 +24,8 @@ export default async function Page({ params }: { params: { page: string } }) {
   const startIndex = (pageNumber - 1) * POSTS_PER_PAGE
   const endIndex = startIndex + POSTS_PER_PAGE
   const { data: articles, data: id } = await fetchAllArticles()
-  console.log('****data$$$$', id)
-  const postsToShow = articles.slice(startIndex, endIndex)
+  const posts = transformArticlesData(articles)
+  const postsToShow = posts.slice(startIndex, endIndex)
   console.log('*****POST TO SHOW :', postsToShow)
 
   const pagination = {
