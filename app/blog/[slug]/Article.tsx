@@ -54,8 +54,8 @@ export default function Article(slug) {
   }
 
   const article = articleData.data[0].attributes
+  console.log('Article  :', article)
   const articleImage = article.Image.data ? article.Image.data.attributes : null
-  console.log('Article image', articleImage)
   const { Title, Content, Date, VideoUrl, tags } = article
   const isArray = Array.isArray(Content)
   const Layout = PostLayout
@@ -78,7 +78,7 @@ export default function Article(slug) {
           articleImage && (
             <Image
               alt={articleImage.alternativeText || 'Image'}
-              src={`https://christweb.s3.eu-west-2.amazonaws.com${articleImage.url}`}
+              src={`${articleImage.url}`}
               className="  w-full object-cover object-center md:h-64 lg:h-72"
               width={544}
               height={306}
