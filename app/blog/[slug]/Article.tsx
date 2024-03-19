@@ -80,6 +80,7 @@ export default function Article(slug) {
               className=" mx-auto h-48 w-48 rounded-full  "
               width={544}
               height={306}
+              src={articleImage.url}
             />
           )
         )}
