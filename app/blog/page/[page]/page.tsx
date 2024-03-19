@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { page: string } }) {
   const pageNumber = parseInt(params.page, 10)
   const startIndex = (pageNumber - 1) * POSTS_PER_PAGE
   const endIndex = startIndex + POSTS_PER_PAGE
-  const { data: articles, data: id } = await fetchAllArticles()
+  const { data: articles } = await fetchAllArticles()
   const posts = transformArticlesData(articles)
   const postsToShow = posts.slice(startIndex, endIndex)
   console.log('*****POST TO SHOW :', postsToShow)

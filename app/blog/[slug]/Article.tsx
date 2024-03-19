@@ -61,7 +61,7 @@ export default function Article(slug) {
 
   return (
     <>
-      <Layout title={Title} date={Date} locale={siteMetadata.locale} >
+      <Layout title={Title} date={Date} locale={siteMetadata.locale}>
         {VideoUrl ? (
           <iframe
             width="560"
@@ -77,7 +77,6 @@ export default function Article(slug) {
           articleImage && (
             <Image
               alt={articleImage.alternativeText || 'Image'}
-              src={`${articleImage.url}`}
               className=" mx-auto h-48 w-48 rounded-full  "
               width={544}
               height={306}
