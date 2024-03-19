@@ -69,7 +69,6 @@ export default function ListLayoutWithTags({
   const tagCounts: Record<string, number> = {}
 
   posts.forEach((post) => {
-    console.log('posts dans ListLAayoutWithTags', post)
     post.tags.forEach((tag) => {
       if (tag in tagCounts) {
         tagCounts[tag] += 1

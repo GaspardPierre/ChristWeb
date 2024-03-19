@@ -56,23 +56,26 @@ export default function Article(slug) {
   console.log('Article  :', article)
   const articleImage = article.Image.data ? article.Image.data.attributes : null
   const { Title, Content, Date, VideoUrl, tags } = article
+  const tagsData = tags.data[0].attributes.Categorie
   const isArray = Array.isArray(Content)
   const Layout = PostLayout
 
   return (
     <>
-      <Layout title={Title} date={Date} locale={siteMetadata.locale}>
+      <Layout title={Title} date={Date} locale={siteMetadata.locale} tags={tagsData}>
         {VideoUrl ? (
-          <iframe
-            width="560"
-            height="560"
-            src={VideoUrl}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            className=" mx-auto md:h-64 lg:h-72"
-          ></iframe>
+          <div className="flex justify-center">
+            <iframe
+              width={560}
+              height={306}
+              src={VideoUrl}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="aspect-video h-auto w-full md:h-auto md:max-w-md lg:h-auto lg:max-w-xl"
+            ></iframe>
+          </div>
         ) : (
           articleImage && (
             <Image
