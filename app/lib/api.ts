@@ -25,11 +25,11 @@ export const fetchAllArticleSlugs = async () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        /*  'Cache-Control': 'max-age=3600', */
+        'Cache-Control': 'max-age=3600',
       },
     })
     const data = await response.json()
-    console.log('data**** ', data)
+
     return data
   } catch (error) {
     console.error('Erreur lors de la récupération des slugs des articles: ', error)

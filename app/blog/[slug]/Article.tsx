@@ -57,6 +57,7 @@ export default function Article(slug) {
   const articleImage = article.Image.data ? article.Image.data.attributes : null
   const { Title, Content, Date, VideoUrl, tags } = article
   const tagsData = tags.data[0].attributes.Categorie
+  console.log('TAGS*******', tagsData)
   const isArray = Array.isArray(Content)
   const Layout = PostLayout
 

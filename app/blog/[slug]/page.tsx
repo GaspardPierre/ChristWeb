@@ -23,7 +23,6 @@ export async function generateStaticParams() {
   const response = await fetchAllArticleSlugs()
 
   const articles = response.data
-  console.log('DATA****', response.data)
   return articles.map((article) => ({
     params: { slug: article.slug },
   }))

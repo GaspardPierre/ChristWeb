@@ -13,7 +13,7 @@ export interface TagData {
   }
 }
 
-/* export interface ArticleAttributes {
+export interface ArticleAttributes {
   Title: string
   Content: string
   Date: string
@@ -29,7 +29,7 @@ export interface Article {
   attributes: ArticleAttributes
   meta?: Record<string, unknown>
 }
- */
+
 /* export interface ArticlesResponse {
   data: Article[]
   meta?: Record<string, unknown>
@@ -55,4 +55,20 @@ export interface SearchConfig {
 export interface SearchProviderProps {
   children: React.ReactNode
   searchConfig?: SearchConfig
+}
+
+export interface Category {
+  id: number
+  name: string
+  articles?: Article[]
+}
+
+export interface Author {
+  id: number
+  name: string
+  web?: string
+  bio?: string
+  links?: string[]
+  articles?: Article[] | Article | null
+  avatar?: string
 }
