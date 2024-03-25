@@ -2984,6 +2984,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/blocks-react-renderer@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "@strapi/blocks-react-renderer@npm:1.0.1"
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 064889a3e9f3caf80a7575ad43921477e38724bae7650333fa9ceb9b5b880b8305a975e308e82e589feb309964a573b9e98fc1d5847f2a049b2857cbba9e7f75
+  languageName: node
+  linkType: hard
+
 "@svgr/babel-plugin-add-jsx-attribute@npm:8.0.0":
   version: 8.0.0
   resolution: "@svgr/babel-plugin-add-jsx-attribute@npm:8.0.0"
@@ -4785,7 +4795,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domhandler@npm:^5.0.2, domhandler@npm:^5.0.3":
+"domhandler@npm:5.0.3, domhandler@npm:^5.0.2, domhandler@npm:^5.0.3":
   version: 5.0.3
   resolution: "domhandler@npm:5.0.3"
   dependencies:
@@ -4794,7 +4804,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domutils@npm:^3.0.1":
+"domutils@npm:^3.0.1, domutils@npm:^3.1.0":
   version: 3.1.0
   resolution: "domutils@npm:3.1.0"
   dependencies:
@@ -4876,7 +4886,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"entities@npm:^4.2.0, entities@npm:^4.4.0":
+"entities@npm:^4.2.0, entities@npm:^4.4.0, entities@npm:^4.5.0":
   version: 4.5.0
   resolution: "entities@npm:4.5.0"
   checksum: 853f8ebd5b425d350bffa97dd6958143179a5938352ccae092c62d1267c4e392a039be1bae7d51b6e4ffad25f51f9617531fedf5237f15df302ccfb452cbf2d7
@@ -6475,6 +6485,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-dom-parser@npm:5.0.8":
+  version: 5.0.8
+  resolution: "html-dom-parser@npm:5.0.8"
+  dependencies:
+    domhandler: 5.0.3
+    htmlparser2: 9.1.0
+  checksum: f264d58665ab1c49e84b9aa28aad4366b5661a9ed742d40827315ba2b8a2915d16624ec517c743421e5543cc7eeb62c0cadfb07b1399d5f11fecf6611861b04d
+  languageName: node
+  linkType: hard
+
 "html-enumerated-attributes@npm:^0.1.0":
   version: 0.1.0
   resolution: "html-enumerated-attributes@npm:0.1.0"
@@ -6489,6 +6509,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-react-parser@npm:^5.1.7":
+  version: 5.1.9
+  resolution: "html-react-parser@npm:5.1.9"
+  dependencies:
+    domhandler: 5.0.3
+    html-dom-parser: 5.0.8
+    react-property: 2.0.2
+    style-to-js: 1.1.11
+  peerDependencies:
+    "@types/react": 17 || 18
+    react: 0.14 || 15 || 16 || 17 || 18
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: c161a8dd2e2344871434bd9eb574d21d71a1f154f343d791cc567f938da67868873e862b4f782d5087d22185b0b2585e123fa02d7162267d62b2a816d136d2bb
+  languageName: node
+  linkType: hard
+
 "html-url-attributes@npm:^2.0.0":
   version: 2.0.0
   resolution: "html-url-attributes@npm:2.0.0"
@@ -6500,6 +6538,18 @@ __metadata:
   version: 2.0.1
   resolution: "html-void-elements@npm:2.0.1"
   checksum: 06d41f13b9d5d6e0f39861c4bec9a9196fa4906d56cd5cf6cf54ad2e52a85bf960cca2bf9600026bde16c8331db171bedba5e5a35e2e43630c8f1d497b2fb658
+  languageName: node
+  linkType: hard
+
+"htmlparser2@npm:9.1.0":
+  version: 9.1.0
+  resolution: "htmlparser2@npm:9.1.0"
+  dependencies:
+    domelementtype: ^2.3.0
+    domhandler: ^5.0.3
+    domutils: ^3.1.0
+    entities: ^4.5.0
+  checksum: e5f8d5193967e4a500226f37bdf2c0f858cecb39dde14d0439f24bf2c461a4342778740d988fbaba652b0e4cb6052f7f2e99e69fc1a329a86c629032bb76e7c8
   languageName: node
   linkType: hard
 
@@ -6655,6 +6705,13 @@ __metadata:
   version: 0.1.1
   resolution: "inline-style-parser@npm:0.1.1"
   checksum: 5d545056a3e1f2bf864c928a886a0e1656a3517127d36917b973de581bd54adc91b4bf1febcb0da054f204b4934763f1a4e09308b4d55002327cf1d48ac5d966
+  languageName: node
+  linkType: hard
+
+"inline-style-parser@npm:0.2.2":
+  version: 0.2.2
+  resolution: "inline-style-parser@npm:0.2.2"
+  checksum: 698893d6542d4e7c0377936a1c7daec34a197765bd77c5599384756a95ce8804e6b79347b783aa591d5e9c6f3d33dae74c6d4cad3a94647eb05f3a785e927a3f
   languageName: node
   linkType: hard
 
@@ -9502,6 +9559,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-property@npm:2.0.2":
+  version: 2.0.2
+  resolution: "react-property@npm:2.0.2"
+  checksum: c67fb2590dad9102239b2e574fbc078b472e227b66c3d64e1949426e33889d78c2ac5369cc4c740bb8fe61665505940e39a78d113261ac52410f7538089fe367
+  languageName: node
+  linkType: hard
+
 "react-virtual@npm:^2.8.2":
   version: 2.10.4
   resolution: "react-virtual@npm:2.10.4"
@@ -10803,6 +10867,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"style-to-js@npm:1.1.11":
+  version: 1.1.11
+  resolution: "style-to-js@npm:1.1.11"
+  dependencies:
+    style-to-object: 1.0.5
+  checksum: 92a558b6b812cbc2a93911b0a644e17de611eac38c8a44cf2594e088dac82514f1dcbbc4be29d306e6362be31356e4b34cb9fb3d3073576fa4af7ad2f9020d5e
+  languageName: node
+  linkType: hard
+
+"style-to-object@npm:1.0.5":
+  version: 1.0.5
+  resolution: "style-to-object@npm:1.0.5"
+  dependencies:
+    inline-style-parser: 0.2.2
+  checksum: 6201063204b6a94645f81b189452b2ca3e63d61867ec48523f4d52609c81e96176739fa12020d97fbbf023efb57a6f7ec3a15fb3a7fb7eb3ffea0b52b9dd6b8c
+  languageName: node
+  linkType: hard
+
 "style-to-object@npm:^0.4.1":
   version: 0.4.4
   resolution: "style-to-object@npm:0.4.4"
@@ -10938,6 +11020,7 @@ __metadata:
   resolution: "tailwind-nextjs-starter-blog@workspace:."
   dependencies:
     "@next/bundle-analyzer": 14.1.0
+    "@strapi/blocks-react-renderer": ^1.0.0
     "@svgr/webpack": ^8.0.1
     "@tailwindcss/forms": ^0.5.4
     "@tailwindcss/typography": ^0.5.9
@@ -10955,6 +11038,7 @@ __metadata:
     eslint-plugin-prettier: ^5.0.0
     github-slugger: ^2.0.0
     gray-matter: ^4.0.2
+    html-react-parser: ^5.1.7
     husky: ^8.0.0
     image-size: 1.0.0
     lint-staged: ^13.0.0
