@@ -37,9 +37,10 @@ export const fetchAllArticleSlugs = async () => {
 }
 
 export const fetchPostBySlug = async (slug) => {
+  console.log('slug dans li/api ,', slug)
   try {
     const response = await fetch(
-      `${STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`,
+      `${STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate[tags][populate]=*&populate[author][populate]=*`,
       {
         method: 'GET',
         headers: {
@@ -49,6 +50,7 @@ export const fetchPostBySlug = async (slug) => {
       }
     )
     const data = await response.json()
+    console.log('data received ', data)
 
     return data
   } catch (error) {

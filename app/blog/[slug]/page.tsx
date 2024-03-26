@@ -42,7 +42,7 @@ export async function generateMetadata(params) {
   const contentText = extractTextFromRichText(article.Content)
   const description = contentText.length > 150 ? contentText.substring(0, 150) + '...' : contentText
   const publishedAt = article.Date ? new Date(article.Date).toISOString() : ''
-  const imageUrl = article.Image.data ? article.Image.data.attributes : null
+  const imageUrl = article.Image ? article.Image.data.attributes : null
 
   /*   const tags =
     article.tags && Array.isArray(article.tags)

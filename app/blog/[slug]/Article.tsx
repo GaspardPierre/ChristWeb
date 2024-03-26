@@ -54,7 +54,8 @@ export default function Article(slug) {
 
   const article = articleData.data[0].attributes
   console.log('Article  :', article)
-  const articleImage = article.Image.data ? article.Image.data.attributes : null
+  const articleImage = article.Image ? article.Image.data.attributes : null
+  const authorDetails = article.author.data.attributes
   const { Title, Content, Date, VideoUrl, tags } = article
   const tagsData = tags.data[0].attributes.Categorie
   console.log('TAGS*******', tagsData)
@@ -63,7 +64,13 @@ export default function Article(slug) {
 
   return (
     <>
-      <Layout title={Title} date={Date} locale={siteMetadata.locale} tags={tagsData}>
+      <Layout
+        title={Title}
+        date={Date}
+        locale={siteMetadata.locale}
+        tags={tagsData}
+        authorDetails={authorDetails}
+      >
         {VideoUrl ? (
           <div className="flex justify-center">
             <iframe

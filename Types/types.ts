@@ -63,6 +63,13 @@ export interface Category {
   articles?: Article[]
 }
 
+export interface Avatar {
+  data: {
+    attributes: {
+      url: string
+    }
+  }
+}
 export interface Author {
   id: number
   name: string
@@ -70,5 +77,5 @@ export interface Author {
   bio?: string
   links?: string[]
   articles?: Article[] | Article | null
-  avatar?: string
+  avatar?: Avatar
 }
