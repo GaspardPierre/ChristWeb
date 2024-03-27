@@ -50,7 +50,6 @@ export const fetchPostBySlug = async (slug) => {
       }
     )
     const data = await response.json()
-    console.log('data received ', data)
 
     return data
   } catch (error) {

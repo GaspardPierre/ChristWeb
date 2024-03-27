@@ -77,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
         <div className="relative h-[25vh] w-full overflow-hidden ">
           <Image
-            src="/static/images/banniere.jpeg"
+            src="/static/images/banniere2.jpg"
             alt="Bannière"
             layout="fill"
             objectFit="cover"
